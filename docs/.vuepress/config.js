@@ -18,14 +18,18 @@ module.exports = {
             }
         ],
         sidebar: {
-            '/rx/': [
-                ['', 'Rx.NET'],
-                ['operators', '操作符']
-            ],
             '/': [
                 ['', '首页'],
                 ['start', '快速开始'],
                 ['/rx/', 'Rx.NET']
+            ],
+            '/v11/':[
+                ['', 'V11'],
+                ['start', '快速开始']
+            ],
+            '/rx/': [
+                ['', 'Rx.NET'],
+                ['operators', '操作符']
             ]
         }
     },
