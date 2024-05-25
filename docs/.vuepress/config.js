@@ -11,6 +11,13 @@ module.exports = {
                 ]
             },
             {
+                text: 'V11',
+                items: [
+                    { text: 'V11首页', link: '/v11/' },
+                    { text: '快速开始', link: '/v11/start' }
+                ]
+            },
+            {
                 text: 'Rx.NET',
                 items: [
                     { text: '操作符', link: '/rx/operators' }
@@ -24,7 +31,7 @@ module.exports = {
                 ['/rx/', 'Rx.NET']
             ],
             '/v11/':[
-                ['', 'V11'],
+                ['', 'V11首页'],
                 ['start', '快速开始']
             ],
             '/rx/': [
