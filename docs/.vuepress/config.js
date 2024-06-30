@@ -27,7 +27,11 @@ module.exports = {
         sidebar: {
             '/v11/': [
                 ['', 'V11首页'],
-                ['start', '快速开始']
+                ['start', '快速开始'],
+                ['helloworld', 'Hello World'],
+                ['send', '主动发送消息'],
+                ['receive', '处理收到消息'],
+                ['message', '消息链']
             ],
             '/rx/': [
                 ['', 'Rx.NET'],
@@ -36,6 +40,7 @@ module.exports = {
             '/': [
                 ['', '首页'],
                 ['start', '快速开始'],
+                ['/v11/', 'V11'],
                 ['/rx/', 'Rx.NET']
             ]
         }

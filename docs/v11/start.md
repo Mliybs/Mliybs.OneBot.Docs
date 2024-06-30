@@ -1,5 +1,7 @@
 # 快速开始
 
+> 如果你只是一个刚入门cs的小白，建议直接阅读下一节的[HelloWorld](./helloworld)
+
 ## 安装`Mliybs.OneBot.V11`
 
 你可以通过[`NuGet`](https://www.nuget.org/packages/Mliybs.OneBot.V11)下载安装`Mliybs.OneBot.V11`，或通过下述的几个方法来下载安装
@@ -14,7 +16,7 @@
 
 ## 实例化`OneBot`对象
 
-```C#
+```cs
 //Websocket，创建后自动连接
 var bot = OneBot.Websocket(/*URL*/);
 
@@ -31,7 +33,7 @@ var bot = OneBot.WebsocketReverse(/*监听地址*/);
 
 对于消息事件，你可以通过订阅`MessageReceived`来进行处理
 
-```C#
+```cs
 bot.MessageReceived.Subscribe(x =>
 {
     // 其他逻辑
@@ -42,7 +44,7 @@ bot.MessageReceived.Subscribe(x =>
 
 你可以使用`GetPlainText`方法将**所有的纯文本消息**拼接在一起作为字符串返回并与其他字符串比较，也可以直接将`MessageChain`与字符串用比较运算符`==`进行比较，这个方法将在消息链**只包含一条纯文本消息且与字符串相等**的情况下返回`true`，其余都为`false`
 
-```C#
+```cs
 x.GetPlainText() == "111";
 // 或
 x == "111";
@@ -52,7 +54,7 @@ x == "111";
 
 可以使用`is`关键字判断参数类型，如：
 
-```C#
+```cs
 if (x is GroupMessageReceiver receiver)
 {
     // 其他逻辑
@@ -61,7 +63,7 @@ if (x is GroupMessageReceiver receiver)
 
 或在文件开头使用`using System.Reactive.Linq;`，通过调用`OfType`操作符进行筛选，如：
 
-```C#
+```cs
 bot.MessageReceived
     .OfType<GroupMessageReceiver>()
     .Subscribe(x =>
@@ -72,7 +74,7 @@ bot.MessageReceived
 
 `Mliybs.OneBot.V11`同时还提供了一个工具类来快速对收到的消息进行回复，通过`With`方法获取工具对象，省去了判断消息类型的麻烦
 
-```C#
+```cs
 // 在收到消息时自动向对方（或群内）发送消息
 bot.MessageReceived
     .Subscribe(x => x.With(bot).Send("114514"));
@@ -84,7 +86,7 @@ bot.MessageReceived
 
 发送的消息内容用消息链`MessageChain`表示，如果你的消息是纯文本，可以直接使用字符串代替，如果不是则可以使用`MessageChainBuilder`，快速构建一个消息链
 
-```C#
+```cs
 var message = new MessageChainBuilder()
     .At(/*QQ号*/)
     .Text(" 亻尔女子")
@@ -93,7 +95,7 @@ var message = new MessageChainBuilder()
 
 所有的API都为异步方法，使用`await`关键字会验证操作是否成功并返回它们的操作结果，**不成功则会抛出`OperationFailedException`异常**，如果你不关心是否成功与返回结果，不要使用`await`关键字
 
-```C#
+```cs
 await bot.SendGroupMessage(/*群号*/, "114514");
 ```
 
