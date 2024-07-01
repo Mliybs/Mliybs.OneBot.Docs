@@ -8,13 +8,14 @@
 using Mliybs.OneBot.V11;
 
 using var bot = OneBot.Websocket(/*连接地址*/);
+// 连接地址需要为合法的URL，如ws://localhost:3001
 
 bot.MessageReceived.Subscribe(x =>
 {
     Console.WriteLine(x.RawMessage);
-})
+});
 
-Console.Read();
+Console.Read(); // 不要忘了这一句
 ```
 
 如果你收到消息时，控制台打印出消息内容，说明你成功连接到了OneBot框架

@@ -42,13 +42,15 @@ bot.MessageReceived.Subscribe(x =>
 
 消息事件的参数为抽象类`MessageReceiver`，消息内容存储在`Message`属性中，它的类型为消息链`MessageChain`，由多种不同的消息段（如@、回复、图片等）组成
 
-你可以使用`GetPlainText`方法将**所有的纯文本消息**拼接在一起作为字符串返回并与其他字符串比较，也可以直接将`MessageChain`与字符串用比较运算符`==`进行比较，这个方法将在消息链**只包含一条纯文本消息且与字符串相等**的情况下返回`true`，其余都为`false`
+你可以使用`AllText`属性将**所有的纯文本消息**拼接在一起作为字符串返回并与其他字符串比较，也可以直接将`MessageChain`与字符串用比较运算符`==`进行比较，这个方法将在消息链**只包含一条纯文本消息且与字符串相等**的情况下返回`true`，其余都为`false`
 
 ```cs
-x.GetPlainText() == "111";
+x.AllText == "111";
 // 或
 x == "111";
 ```
+
+> 如果你只想在消息链为纯文字时处理请使用`Text`属性，该属性将在消息链只包含一条纯文字消息时返回该文字，除此以外返回`null`
 
 `MessageReceiver`有两个派生类分别为`GroupMessageReceiver`和`PrivateMessageReceiver`，分别表示收到群聊消息和私聊消息，消息事件的参数只会为这两个派生类的其中一个
 
@@ -61,16 +63,18 @@ if (x is GroupMessageReceiver receiver)
 }
 ```
 
-或在文件开头使用`using System.Reactive.Linq;`，通过调用`OfType`操作符进行筛选，如：
+或使用拓展方法`AtGroup`与`AtPrivate`如：
 
 ```cs
 bot.MessageReceived
-    .OfType<GroupMessageReceiver>()
+    .AtGroup()
     .Subscribe(x =>
     {
         // 其他逻辑
     });
 ```
+
+> 你也可以使用Rx.NET提供的`OfType`操作符
 
 `Mliybs.OneBot.V11`同时还提供了一个工具类来快速对收到的消息进行回复，通过`With`方法获取工具对象，省去了判断消息类型的麻烦
 

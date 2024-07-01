@@ -6,7 +6,7 @@
 bot.MessageReceived.Subscribe(x =>
 {
     // x.Message就是消息链
-})
+});
 ```
 
 消息链由数个不同的消息对象构成，如表示文字消息的`TextMessage`和图片消息的`ImageMessage`
@@ -16,7 +16,7 @@ bot.MessageReceived.Subscribe(x =>
 如果你需要发送复杂消息，建议使用`MessageChainBuilder`
 
 ```cs
-var message = new MessageChainBuilder()
+MessageChain message = new MessageChainBuilder()
     .At(/*QQ号*/)
     .Text("Hello World")
     .Build(); // 结尾的Build方法是必要的
@@ -36,7 +36,7 @@ var message = new MessageChainBuilder()
 
 `AllText`属性会将消息链中的所有纯文字消息拼接成一条消息返回
 
-`AllText`是懒加载的，只有访问它的时候它才会拼接，且只拼接一次
+> `AllText`是懒加载的，只有访问它的时候它才会拼接，且只拼接一次
 
 ### CQCode
 
