@@ -31,7 +31,12 @@ module.exports = {
                 ['helloworld', 'Hello World'],
                 ['send', '主动发送消息'],
                 ['receive', '处理收到消息'],
-                ['message', '消息链']
+                ['message', '消息链'],
+                ['quickoperators', '快速操作'],
+                ['reply', '判断是否被回复'],
+                ['image', '发送图片'],
+                ['file', '发送文件'],
+                ['custom', '自定义']
             ],
             '/rx/': [
                 ['', 'Rx.NET'],

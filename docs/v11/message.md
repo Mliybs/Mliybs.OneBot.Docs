@@ -22,6 +22,16 @@ MessageChain message = new MessageChainBuilder()
     .Build(); // 结尾的Build方法是必要的
 ```
 
+> `MessageChainBuilder`有两个链式条件控制方法`If`和`IfElse`，它们将会在满足条件时选择性添加消息，例如：
+
+```cs
+new MessageChainBuilder()
+    .IfElse(DateTime.Now.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday,
+        x => x.Image(/*图片的路径*/).Text("周末，爽"),
+        x => x.Text("加班，急"))
+    .Build();
+```
+
 ## 消息链处理
 
 消息链本身继承自`List<MessageBase>`，你可以使用`Count`属性、索引器`[]`、`foreach`语句来操作它，也可以使用消息链自身提供的属性和方法
