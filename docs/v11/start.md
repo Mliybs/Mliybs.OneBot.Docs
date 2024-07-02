@@ -1,6 +1,6 @@
 # 快速开始
 
-> 如果你只是一个刚入门cs的小白，建议直接阅读下一节的[HelloWorld](./helloworld)
+> 如果你只是一个刚入门C#的小白，建议直接阅读下一节的[HelloWorld](./helloworld)
 
 ## 安装`Mliybs.OneBot.V11`
 
